@@ -1,14 +1,25 @@
+import React from "react";
+import { useSelector } from "react-redux";
+
 interface MainProps {}
 
 const Main = (props: MainProps) => {
-   const i = 0;
-
-   console.log(i);
+   // Redux store'dan ma'lumotlarni olish
+   const products = useSelector((state: any) => state.products);
 
    return (
-      <>
-         <h1>Main page</h1>
-      </>
+      <div>
+         <h1>Do'kon</h1>
+         <div className="product-list">
+            {products.map((product: any) => (
+               <div key={product.id} className="product">
+                  <h2>{product.title}</h2>
+                  <p>Narxi: {product.price}</p>
+                  {/* Boshqa tafsilotlar */}
+               </div>
+            ))}
+         </div>
+      </div>
    );
 };
 
