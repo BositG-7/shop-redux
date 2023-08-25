@@ -1,5 +1,3 @@
-import Main from "./main-page/main";
-
 interface ApplicationProps {}
 
 const Application = (props: ApplicationProps) => {
@@ -9,7 +7,7 @@ const Application = (props: ApplicationProps) => {
 
    return (
       <>
-         <Main />
+         <h1>dwqdq3</h1>
       </>
    );
 };

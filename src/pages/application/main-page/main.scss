@@ -1,0 +1,14 @@
+body {
+   display: grid;
+   place-items: center;
+   height: 100vh;
+}
+.boxs {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+}
+.count {
+   position: absolute;
+   top: 15px;
+   left: 890px;
+}

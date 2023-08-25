@@ -1,14 +1,13 @@
 import initialState from "./data";
 
-interface IAction {
-   type: "DELETE" | "ADD" | "INCRAMENT" | "DECRAMENT";
-}
-const shopReducer = (state = initialState, action: IAction) => {
+const shopReducer = (state = initialState, action: any) => {
    switch (action.type) {
-      case "DELETE":
       case "ADD":
-      case "INCRAMENT":
-      case "DECRAMENT":
+         return {
+            ...state,
+            korzine: [...state.korzine, action.payload] // Mahsulotni savatga qo'shish
+         };
+      // Boshqa hodisalar...
       default:
          return state;
    }
