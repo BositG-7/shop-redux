@@ -1,6 +1,3 @@
-import Header from "./bosh-sahifa/components/header";
-import Statistic from "./bosh-sahifa/components/statistic";
-
 interface ApplicationProps {}
 
 const Application = (props: ApplicationProps) => {
@@ -10,8 +7,7 @@ const Application = (props: ApplicationProps) => {
 
    return (
       <>
-         <Header />
-         <Statistic />
+         <h1>dwqdq3</h1>
       </>
    );
 };
