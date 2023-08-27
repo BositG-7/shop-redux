@@ -5,9 +5,9 @@ const shopReducer = (state = initialState, action: any) => {
       case "ADD":
          return {
             ...state,
-            korzine: [...state.korzine, action.payload] // Mahsulotni savatga qo'shish
+            korzine: [...state.korzine, action.payload]
          };
-      // Boshqa hodisalar...
+
       default:
          return state;
    }
