@@ -119,6 +119,7 @@ const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
                )}
             </Flex>
          </Box>
+         <h1>Obshi summa {telefon.price + ipad.price + macbook.price}</h1>
          <Button
             onClick={() => {
                setKorzine(false);
