@@ -1,54 +1,40 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+import { createAction, createReducer } from "@reduxjs/toolkit";
+
 import initialState from "./data";
 
-const shopReducer = (state = initialState, action: any) => {
-   switch (action.type) {
-      case "ADD":
-         return {
-            ...state,
-            korzine: [...state.korzine, action.payload]
-         };
+// Actionlarni yaratish
+export const addItem = createAction("shop/add");
+export const incrementItem = createAction("shop/increment");
+export const decrementItem = createAction("shop/decrement");
+export const deleteItem = createAction("shop/delete");
 
-      case "INCREMENT":
-         return incrementItem(state, action.payload);
+// Reducerlarni yaratish
+const shopReducer = createReducer(initialState, (builder: any) => {
+   builder
+      .addCase(addItem, (state: any, action: any) => {
+         state.korzine.push(action.payload);
+      })
+      .addCase(incrementItem, (state: any, action: any) => {
+         const productName = action.payload;
+         const item = state.korzine.find((item: any) => item.name === productName);
 
-      case "DECREMENT":
-         return decrementItem(state, action.payload);
+         if (item) {
+            item.count += 1;
+         }
+      })
+      .addCase(decrementItem, (state: any, action: any) => {
+         const productName = action.payload;
+         const item = state.korzine.find((item: any) => item.name === productName);
 
-      case "DELETE":
-         return deleteItem(state, action.payload);
+         if (item && item.count > 0) {
+            item.count -= 1;
+         }
+      })
+      .addCase(deleteItem, (state: any, action: any) => {
+         const productName = action.payload;
 
-      default:
-         return state;
-   }
-};
-
-const incrementItem = (state: any, productName: any) => {
-   const updatedKorzine = state.korzine.map((item: any) => {
-      if (item.name === productName) {
-         return { ...item, count: item.count + 1 };
-      }
-      return item;
-   });
-
-   return { ...state, korzine: updatedKorzine };
-};
-
-const decrementItem = (state: any, productName: any) => {
-   const updatedKorzine = state.korzine.map((item: any) => {
-      if (item.name === productName && item.count > 0) {
-         return { ...item, count: item.count - 1 };
-      }
-      return item;
-   });
-
-   return { ...state, korzine: updatedKorzine };
-};
-
-const deleteItem = (state: any, productName: any) => {
-   const updatedKorzine = state.korzine.filter((item: any) => item.name !== productName);
-
-   return { ...state, korzine: updatedKorzine };
-};
+         state.korzine = state.korzine.filter((item: any) => item.name !== productName);
+      });
+});
 
 export default shopReducer;

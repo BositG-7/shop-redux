@@ -12,6 +12,7 @@
 		"@mantine/nprogress": "^6.0.19",
 		"@mantine/tiptap": "^6.0.19",
 		"@react-icons/all-files": "^4.1.0",
+		"@reduxjs/toolkit": "^1.9.5",
 		"@tabler/icons-react": "^2.31.0",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",

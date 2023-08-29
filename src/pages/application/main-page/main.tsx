@@ -4,16 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Korzina from "../korzina-page/korzina";
 
+import { addItem } from "./shopreducer"; // Importing the new action
+
 import "./main.scss";
 
-const Main = (props: any) => {
+const Main = () => {
    const [isKorzine, setKorzine] = useState(false);
    const products = useSelector((state: any) => state.products);
-   const korzine = useSelector((state: any) => state.korzine);
+   const korzine = useSelector((state: any) => state.korzine); // Update the korzine selector
    const dispatch = useDispatch();
 
    const addToCart = (product: any) => {
-      dispatch({ type: "ADD", payload: product });
+      dispatch(addItem(product)); // Using the new action
    };
 
    if (isKorzine) return <Korzina korzine={korzine} setKorzine={setKorzine} />;

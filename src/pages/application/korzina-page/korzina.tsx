@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Flex } from "@mantine/core";
 import { useDispatch } from "react-redux";
 
+import { decrementItem, deleteItem, incrementItem } from "../main-page/shopreducer"; // Update the import path
+
 interface KorzinaProps {
    korzine: any[];
    setKorzine: (isBollen: boolean) => void;
 }
 
 const Korzina: React.FC<KorzinaProps> = ({ korzine, setKorzine }) => {
+   const dispatch = useDispatch();
    const [telefon, setTelefon] = useState({ count: 0, price: 0, name: "IPHONE 15" });
    const [ipad, setIpad] = useState({ count: 0, price: 0, name: "IPAD 5" });
    const [macbook, setMacbook] = useState({ count: 0, price: 0, name: "MACBOOK Air M1" });
@@ -47,20 +50,21 @@ const Korzina: React.FC<KorzinaProps> = ({ korzine, setKorzine }) => {
       }));
    }, [korzine]);
 
-   const dispatch = useDispatch();
-
    const handleIncrement = (productName: string) => {
-      dispatch({ type: "INCREMENT", payload: productName });
-
+      // @ts-ignore
+      dispatch(incrementItem(productName));
    };
 
    const handleDecrement = (productName: string) => {
-      dispatch({ type: "DECREMENT", payload: productName });
+      // @ts-ignore
+
+      dispatch(decrementItem(productName));
    };
 
    const handleDelete = (productName: string) => {
-      dispatch({ type: "DELETE", payload: productName });
+      // @ts-ignore
 
+      dispatch(deleteItem(productName));
    };
 
    return (
