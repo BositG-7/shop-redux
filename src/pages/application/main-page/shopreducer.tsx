@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-// shopReducer.ts
-
 import initialState from "./data";
 
 const shopReducer = (state = initialState, action: any) => {
@@ -25,9 +23,7 @@ const shopReducer = (state = initialState, action: any) => {
    }
 };
 
-const incrementItem = (state: any, productName: string) => {
-   console.log(productName);
-
+const incrementItem = (state: any, productName: any) => {
    const updatedKorzine = state.korzine.map((item: any) => {
       if (item.name === productName) {
          return { ...item, count: item.count + 1 };
@@ -38,11 +34,7 @@ const incrementItem = (state: any, productName: string) => {
    return { ...state, korzine: updatedKorzine };
 };
 
-const decrementItem = (state: any, productName: string) => {
-   console.log(state);
-
-   console.log(productName);
-
+const decrementItem = (state: any, productName: any) => {
    const updatedKorzine = state.korzine.map((item: any) => {
       if (item.name === productName && item.count > 0) {
          return { ...item, count: item.count - 1 };
@@ -53,7 +45,7 @@ const decrementItem = (state: any, productName: string) => {
    return { ...state, korzine: updatedKorzine };
 };
 
-const deleteItem = (state: any, productName: string) => {
+const deleteItem = (state: any, productName: any) => {
    const updatedKorzine = state.korzine.filter((item: any) => item.name !== productName);
 
    return { ...state, korzine: updatedKorzine };

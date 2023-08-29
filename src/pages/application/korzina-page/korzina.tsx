@@ -8,7 +8,7 @@ interface KorzinaProps {
    setKorzine: (isBollen: boolean) => void;
 }
 
-const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
+const Korzina: React.FC<KorzinaProps> = ({ korzine, setKorzine }) => {
    const [telefon, setTelefon] = useState({ count: 0, price: 0, name: "IPHONE 15" });
    const [ipad, setIpad] = useState({ count: 0, price: 0, name: "IPAD 5" });
    const [macbook, setMacbook] = useState({ count: 0, price: 0, name: "MACBOOK Air M1" });
@@ -21,9 +21,7 @@ const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
       let macbookCount = 0;
       let macbookTotalPrice = 0;
 
-      for (let i = 0; i < korzine.length; i++) {
-         const item = korzine[i];
-
+      korzine.forEach(item => {
          if (item.name === "IPHONE 15") {
             telefonCount++;
             telefonTotalPrice += item.price;
@@ -34,7 +32,7 @@ const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
             macbookCount++;
             macbookTotalPrice += item.price;
          }
-      }
+      });
 
       setTelefon(prevTelefon => ({
          ...prevTelefon,
@@ -51,12 +49,9 @@ const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
 
    const dispatch = useDispatch();
 
-   //    const addToCart = (product: any) => {
-   //     dispatch({ type: "ADD", payload: product });
-   //  };
-
    const handleIncrement = (productName: string) => {
       dispatch({ type: "INCREMENT", payload: productName });
+
    };
 
    const handleDecrement = (productName: string) => {
@@ -64,9 +59,8 @@ const Korzina = ({ korzine, setKorzine }: KorzinaProps) => {
    };
 
    const handleDelete = (productName: string) => {
-      console.log("qdqwdqd");
-
       dispatch({ type: "DELETE", payload: productName });
+
    };
 
    return (

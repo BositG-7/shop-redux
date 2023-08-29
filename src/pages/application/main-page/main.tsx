@@ -6,9 +6,7 @@ import Korzina from "../korzina-page/korzina";
 
 import "./main.scss";
 
-interface MainProps {}
-
-const Main: React.FC<MainProps> = props => {
+const Main = (props: any) => {
    const [isKorzine, setKorzine] = useState(false);
    const products = useSelector((state: any) => state.products);
    const korzine = useSelector((state: any) => state.korzine);
@@ -18,11 +16,8 @@ const Main: React.FC<MainProps> = props => {
       dispatch({ type: "ADD", payload: product });
    };
 
-   console.log(korzine);
-
    if (isKorzine) return <Korzina korzine={korzine} setKorzine={setKorzine} />;
 
-   // eslint-disable-next-line consistent-return
    return (
       <div>
          <Flex sx={{ position: "relative" }} justify="space-between" align="center">
